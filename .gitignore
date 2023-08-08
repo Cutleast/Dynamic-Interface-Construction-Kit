@@ -6,3 +6,4 @@ tests
 **.old
 src/*.xml
 src/Output
+interface
