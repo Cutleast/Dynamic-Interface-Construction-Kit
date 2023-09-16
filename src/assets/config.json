@@ -1,6 +1,6 @@
 {
     // Files that are ignored
-    // For example files, that are known 
+    // For example, files that are known 
     // to raise errors
     "file_blacklist": [],
 

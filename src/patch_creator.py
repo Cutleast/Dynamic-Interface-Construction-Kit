@@ -18,7 +18,6 @@ import bsa_extractor as bsa
 
 import errors
 import ffdec
-import utils
 from main import MainApp
 
 
@@ -469,28 +468,22 @@ File '{shape_path}' does not exist!"
         Creates patch data by comparing patched mod with original mod:
 
         1. Copy patched mod and original mod to a temp folder.
-
         2. Extract original mod files from BSAs if required and possible.
-
         3. Convert patched and original SWFs to XMLs.
-
         4. Compare patched and original XMLs.
-
         5. Export different shapes via ffdec commandline.
 
         The following three steps are required since FFDec makes more changes
-        to a file when replacing shapes. Therefore, the shapes are replaced in the original files to avoid obsolete differences.
+        to a file than just the shapes themselves when replacing shapes.
+        Therefore, the shapes are replaced in the original files to avoid obsolete differences.
 
         6. Replace shapes of the original file.
-
-        7. Convert modified original SWFs to XMLs, again.
-
+        7. Convert original SWFs with replaced shapes to XMLs, again.
         8. Compare original and patched file.
 
         And then to finish the patch:
 
         9. Create output folder with JSON files for each modified SWF.
-
         10. Copy finished patch data to `<current directory>/Output`.
         """
 

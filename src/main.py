@@ -243,6 +243,34 @@ here</a>.\
 
         self.log.info(f"Created patch in {(time.time() - self.start_time):.3f} second(s).")
 
+        message_box = qtw.QMessageBox(self.root)
+        message_box.setWindowIcon(self.root.windowIcon())
+        message_box.setStyleSheet(self.root.styleSheet())
+        utils.apply_dark_title_bar(message_box)
+        message_box.setWindowTitle(f"Created pach in {(time.time() - self.start_time):.3f} second(s)")
+        message_box.setText(
+            "Patch successfully created"
+        )
+        message_box.setStandardButtons(
+            qtw.QMessageBox.StandardButton.No
+            | qtw.QMessageBox.StandardButton.Yes
+        )
+        message_box.setDefaultButton(
+            qtw.QMessageBox.StandardButton.Yes
+        )
+        message_box.button(
+            qtw.QMessageBox.StandardButton.Yes
+        ).setText("Close DICK")
+        message_box.button(
+            qtw.QMessageBox.StandardButton.No
+        ).setText("Ok")
+        choice = message_box.exec()
+
+        # Handle the user's choice
+        if choice == qtw.QMessageBox.StandardButton.Yes:
+            # Close DICK
+            self.exit()
+
     def cancel_creator(self):
         self.creator_thread.terminate()
 
