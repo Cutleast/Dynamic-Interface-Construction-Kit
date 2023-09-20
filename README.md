@@ -1,6 +1,5 @@
 <p align="center">
-PLACEHOLDER
-<!-- <img src="https://i.imgur.com/Tl3rkTE.png" width="500px" /> -->
+<img src="https://i.imgur.com/76J8IOv.png" width="500px" />
 <br>
 <a href="https://www.nexusmods.com/skyrimspecialedition/mods/97864"><img src="https://i.imgur.com/STsBXT6.png" height="60px"/> </a>
 <a href="https://ko-fi.com/cutleast"><img src="https://i.imgur.com/KcPrhK5.png" height="60px"/> </a>
