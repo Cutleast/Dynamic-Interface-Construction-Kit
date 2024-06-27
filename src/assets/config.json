@@ -1,6 +1,6 @@
 {
     // Files that are ignored
-    // For example, files that are known 
+    // For example, files that are known
     // to raise errors
     "file_blacklist": [],
 
@@ -30,17 +30,13 @@
         "textID",
         "depth",
         "name",
-        "frameId"
+        "frameId",
+        "shapeId"
     ],
 
     // Item types that are ignored
     "type_blacklist": [
-        "DefineShapeTag",
-        "DefineShape2Tag",
-        "DefineShape3Tag",
-        "DefineShape4Tag",
         "DoInitActionTag",
-        "SHAPEWITHSTYLE",
         "ExportAssetsTag",
         "ImportAssets2Tag",
         "DefineBitsLossless2Tag"
@@ -48,7 +44,7 @@
 
     // XML tags that are ignored
     "tag_blacklist": [
-        "shapeRecords",
+        "shapes",
         "fillStyles",
         "color",
         "lineStyles",
