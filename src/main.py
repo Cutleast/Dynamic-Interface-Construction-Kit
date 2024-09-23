@@ -28,7 +28,7 @@ class MainApp(qtw.QApplication):
     """
 
     name = "Dynamic Interface Construction Kit"
-    version = "1.0"
+    version = "1.0.2"
 
     creator_thread: utils.Thread = None
     done_signal = qtc.Signal()
