@@ -12,7 +12,7 @@ import shutil
 import tempfile as tmp
 import xml.etree.ElementTree as ET
 from pathlib import Path
-
+import time
 import jstyleson as json
 import bsa_extractor as bsa
 
@@ -160,6 +160,8 @@ class PatchCreator:
 
             if patch_data:
                 self.patch_data[swf_file]["swf"] = patch_data
+            else:
+                self.log.info("Detected no differences in file.")
 
     @staticmethod
     def compare_elements(
@@ -340,6 +342,10 @@ File '{shape_path}' does not exist!"
 
     @staticmethod
     def check_if_different(elem1: ET.Element, elem2: ET.Element):
+        # Check if one of the elements is None
+        if elem1 is None and elem2 is not None or (elem1 is not None and elem2 is None):
+            return True
+
         # Check if element attributes are different
         if elem1.attrib != elem2.attrib:
             return True
@@ -423,6 +429,7 @@ File '{shape_path}' does not exist!"
 
         output_folder = self.tmpdir / "Output" / "Patch"
 
+        print(self.patch_data)
         for swf_file, patch_data in self.patch_data.items():
             shapes_patch = patch_data.get("shapes")
             swf_patch = patch_data.get("swf")
@@ -446,6 +453,9 @@ File '{shape_path}' does not exist!"
 
             with open(json_file, "w") as file:
                 file.write(json.dumps(patch_data, indent=4))
+        
+        if not output_folder.is_dir():
+            self.log.info("Detected no differences in files.")
 
     def finish_patch(self):
         """
@@ -460,8 +470,8 @@ File '{shape_path}' does not exist!"
         if dst_folder.is_dir():
             shutil.rmtree(dst_folder)
             self.log.info("Deleted existing output folder.")
-        
-        shutil.copytree(src_folder, dst_folder)
+        elif src_folder.is_dir():
+            shutil.copytree(src_folder, dst_folder)
 
     def create_patch(self):
         """
@@ -520,5 +530,7 @@ File '{shape_path}' does not exist!"
 
             # 10. Copy finished output folder
             self.finish_patch()
+
+            time.sleep(3600)
 
         self.app.done_signal.emit()
